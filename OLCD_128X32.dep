@@ -1,0 +1,71 @@
+;	STMicroelectronics dependencies file
+
+[Version]
+Keyword=ST7Project
+Number=1.3
+
+[Root.Source Files.src\uart.c.Config.0]
+ExternDep= src\uart.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h inc\uart.h  inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h inc\stm8s_adc1.h  inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h inc\stm8s_exti.h  inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h  D:\01_MCU\COSMIC\CXSTM8\Hstm8\stdarg.h D:\01_MCU\COSMIC\CXSTM8\Hstm8\stdio.h
+
+[Root.Source Files.src\ssd1306.c.Config.0]
+ExternDep= src\ssd1306.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\fonts.h inc\SSD1306.h inc\STM8S.h inc\stm8s_conf.h inc\stm8s.h  inc\stm8s_delay.h inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h  inc\stm8s_clk.h inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h  inc\stm8s_i2c.h inc\stm8s_itc.h inc\stm8s_iwdg.h inc\stm8s_rst.h  inc\stm8s_spi.h inc\stm8s_tim1.h inc\stm8s_tim2.h inc\stm8s_tim4.h  inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.main.c.Config.0]
+ExternDep= main.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h inc\STM8S.h  inc\stm8s_conf.h inc\stm8s.h inc\stm8s_delay.h inc\stm8s_adc1.h  inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h inc\stm8s_exti.h  inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h  D:\01_MCU\COSMIC\CXSTM8\Hstm8\stdio.h inc\SSD1306.h
+
+[Root.Source Files.src\stm8s_adc1.c.Config.0]
+ExternDep= src\stm8s_adc1.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_adc1.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h inc\stm8s_exti.h  inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_awu.c.Config.0]
+ExternDep= src\stm8s_awu.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_awu.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_beep.h inc\stm8s_clk.h inc\stm8s_exti.h  inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_beep.c.Config.0]
+ExternDep= src\stm8s_beep.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_beep.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_clk.h inc\stm8s_exti.h  inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_clk.c.Config.0]
+ExternDep= src\stm8s_clk.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_clk.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_exti.h  inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_delay.c.Config.0]
+ExternDep= src\stm8s_delay.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_delay.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_adc1.h  inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h inc\stm8s_exti.h  inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_exti.c.Config.0]
+ExternDep= src\stm8s_exti.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_exti.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_flash.c.Config.0]
+ExternDep= src\stm8s_flash.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_flash.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_gpio.h inc\stm8s_i2c.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_gpio.c.Config.0]
+ExternDep= src\stm8s_gpio.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_gpio.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_i2c.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_i2c.c.Config.0]
+ExternDep= src\stm8s_i2c.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_i2c.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_itc.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_itc.c.Config.0]
+ExternDep= src\stm8s_itc.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_itc.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h  inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_iwdg.c.Config.0]
+ExternDep= src\stm8s_iwdg.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_iwdg.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h  inc\stm8s_itc.h inc\stm8s_rst.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_rst.c.Config.0]
+ExternDep= src\stm8s_rst.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_rst.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h  inc\stm8s_itc.h inc\stm8s_iwdg.h inc\stm8s_spi.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_spi.c.Config.0]
+ExternDep= src\stm8s_spi.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_spi.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h  inc\stm8s_itc.h inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_tim1.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_tim1.c.Config.0]
+ExternDep= src\stm8s_tim1.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_tim1.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h  inc\stm8s_itc.h inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h  inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_tim2.c.Config.0]
+ExternDep= src\stm8s_tim2.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_tim2.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h  inc\stm8s_itc.h inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h  inc\stm8s_tim1.h inc\stm8s_tim4.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_tim4.c.Config.0]
+ExternDep= src\stm8s_tim4.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_tim4.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h  inc\stm8s_itc.h inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h  inc\stm8s_tim1.h inc\stm8s_tim2.h inc\stm8s_uart1.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_uart1.c.Config.0]
+ExternDep= src\stm8s_uart1.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_uart1.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h  inc\stm8s_itc.h inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h  inc\stm8s_tim1.h inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_wwdg.h
+
+[Root.Source Files.src\stm8s_wwdg.c.Config.0]
+ExternDep= src\stm8s_wwdg.c D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h  inc\stm8s_wwdg.h inc\stm8s.h inc\stm8s_conf.h inc\stm8s_delay.h  inc\stm8s_adc1.h inc\stm8s_awu.h inc\stm8s_beep.h inc\stm8s_clk.h  inc\stm8s_exti.h inc\stm8s_flash.h inc\stm8s_gpio.h inc\stm8s_i2c.h  inc\stm8s_itc.h inc\stm8s_iwdg.h inc\stm8s_rst.h inc\stm8s_spi.h  inc\stm8s_tim1.h inc\stm8s_tim2.h inc\stm8s_tim4.h inc\stm8s_uart1.h
+
+[Root.Source Files.stm8_interrupt_vector.c.Config.0]
+ExternDep= stm8_interrupt_vector.c  D:\01_MCU\COSMIC\CXSTM8\Hstm8\mods0.h

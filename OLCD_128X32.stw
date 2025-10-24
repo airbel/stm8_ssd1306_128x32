@@ -1,0 +1,12 @@
+;	STMicroelectronics Workspace file
+
+[Version]
+Keyword=ST7Workspace-V0.7
+
+[Project0]
+Filename=OLCD_128X32.stp
+Dependencies=
+[Options]
+ActiveProject=OLCD_128X32
+ActiveConfig=Debug
+AddSortedElements=0
