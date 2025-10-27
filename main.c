@@ -10,25 +10,42 @@ void GPIO_setup(void);
 void ADC1_setup(void);
 uint16_t ADC1_ReadChannel(uint8_t ch);
 
+
 void main()
 {		
 	uint16_t adcValue;
   uint32_t voltage_mV;	
+	bool state = 0;
 	
 	clock_setup();
 	GPIO_setup();
 	ADC1_setup();  	
 	OLED_init();
-	
+		
+
 	OLED_clear_screen();
-	OLED_print_string_2x_correct(0, 0, "Moisture");
-	while(TRUE)
-	{			
+	OLED_print_string_2x(20, 0, "Moisture");	
 	
-		OLED_clear_value_area(); 
+	while(TRUE)
+	{					
 		adcValue = ADC1_ReadChannel(ADC1_CHANNEL_4);   //Ū PA3
 		voltage_mV = ((uint32_t)adcValue * 3300UL) >> 10;
-		OLED_print_uint16_2x(0,2,adcValue);
+		if (adcValue > 900)
+			{
+				state = 1;
+			}	else	{
+				state = 0;
+			}
+		OLED_clear_value_area();
+		if(state){			
+			Low_water();
+		}	else {
+			Full_Water();
+		}
+		
+		OLED_print_int(0,2,voltage_mV);
+		
+		
 		OLED_clear_buffer();
 		delay_ms(1000);		
 	};

@@ -120,7 +120,7 @@ void OLED_fill(unsigned char bmp_data)
     }
 }
 
-
+/*
 void OLED_print_Image(const unsigned char *bmp, unsigned char pixel)
 {
     unsigned char x_pos = 0;
@@ -163,7 +163,51 @@ void OLED_clear_screen(void)
 {
     OLED_fill(0x00);
 }
+*/
 
+
+void OLED_print_Image(const unsigned char *bmp, unsigned char pixel)
+{
+    unsigned char x_pos = 0;
+    unsigned char page = 0;
+   
+    if(pixel != OFF)
+    {
+        pixel = 0xFF;
+    }
+    else
+    {
+        pixel = 0x00;
+    }
+   
+    for(page = 0; page < 2; page++)
+    {
+         OLED_gotoxy(x_min, page);
+
+         I2C_GenerateSTART(ENABLE);
+         while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
+       
+         I2C_Send7bitAddress(SSD1306_I2C_Address, I2C_DIRECTION_TX); 
+         while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+       
+         I2C_SendData(SSD1306_DAT);
+         while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));    
+
+         for(x_pos = x_min; x_pos < 16; x_pos++)
+         {
+            I2C_SendData((*bmp++ ^ pixel));
+            while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+         }
+
+		 I2C_GenerateSTOP(ENABLE); 
+     }
+}
+
+
+void OLED_clear_screen(void)
+{
+    OLED_fill(0x00);
+}
 
 void OLED_clear_buffer(void)
 {
@@ -234,7 +278,8 @@ void OLED_print_int(unsigned char x_pos, unsigned char y_pos, signed long value)
         uval /= 10;
     } while(uval > 0 && p >= &ch[1]);
     
-    OLED_print_string(x_pos, y_pos, ch);
+    //OLED_print_string(x_pos, y_pos, ch); //使用一頁
+		OLED_print_string_2x(x_pos, y_pos, ch);//使用二頁
 }
 
 void Draw_Pixel(unsigned char x_pos, unsigned char y_pos, unsigned char colour)
@@ -243,11 +288,18 @@ void Draw_Pixel(unsigned char x_pos, unsigned char y_pos, unsigned char colour)
     unsigned char page = 0x00;
     unsigned char bit_pos = 0x00;
 
-    page = (y_pos / y_max);
-    bit_pos = (y_pos - (page * y_max));
-    value = buffer[((page * x_max) + x_pos)];
-
-    if((colour & YES) != NO)
+    // 修正：每頁有8行，所以 page = y_pos / 8
+    page = (y_pos >> 3);  // 等同於 y_pos / 8
+    bit_pos = (y_pos & 0x07);  // 等同於 y_pos % 8
+    
+    // 檢查座標範圍
+    if(x_pos >= x_max || y_pos >= 32) {  // 32 是總高度
+        return;
+    }
+    
+    value = buffer[(page * x_max) + x_pos];
+		
+    if(colour != 0)  // 直接判斷 colour
     {
         value |= (1 << bit_pos);
     }
@@ -256,12 +308,12 @@ void Draw_Pixel(unsigned char x_pos, unsigned char y_pos, unsigned char colour)
         value &= (~(1 << bit_pos));
     }
 
-    buffer[((page * x_max) + x_pos)] = value;
+    buffer[(page * x_max) + x_pos] = value;
     OLED_gotoxy(x_pos, page);
     OLED_write(value, SSD1306_DAT);
 }
 
-void OLED_print_char_2x_tall(unsigned char x_pos, unsigned char y_pos, unsigned char ch)
+void OLED_print_2xChar(unsigned char x_pos, unsigned char y_pos, unsigned char ch)
 {
 		
     unsigned char s = 0x00;
@@ -320,11 +372,11 @@ void OLED_print_char_2x_tall(unsigned char x_pos, unsigned char y_pos, unsigned 
     }
 }
 
-void OLED_print_string_2x_correct(unsigned char x_pos, unsigned char y_pos, char *ch)
+void OLED_print_string_2x(unsigned char x_pos, unsigned char y_pos, char *ch)
 {
     do
     {
-        OLED_print_char_2x_tall(x_pos, y_pos, *ch++);
+        OLED_print_2xChar(x_pos, y_pos, *ch++);
         x_pos += 12;  // 2倍字體寬度
         
         // 換行處理
@@ -341,51 +393,6 @@ void OLED_print_string_2x_correct(unsigned char x_pos, unsigned char y_pos, char
     }while((*ch >= 0x20) && (*ch <= 0x7F));
 }
 
-void OLED_print_int_2x(unsigned char x_pos, unsigned char y_pos, signed long value)
-{
-    char ch[7] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, '\0'};
-    char *p = &ch[5];
-    unsigned long uval;
-    
-    if(value < 0) {
-        ch[0] = 0x2D;  // 負號 '-'
-        uval = -value;
-    } else {
-        ch[0] = 0x20;  // 空格
-        uval = value;
-    }
-    
-    // 數字轉換
-    do {
-        *p-- = (uval % 10) + 0x30;  // 轉為 ASCII
-        uval /= 10;
-    } while(uval > 0 && p >= &ch[1]);
-    
-    // 使用 2 倍大字體顯示
-    OLED_print_string_2x_correct(x_pos, y_pos, ch);
-}
-
-void OLED_print_uint16_2x(unsigned char x_pos, unsigned char y_pos, uint16_t value)
-{
-    static char ch[6]; // 使用 static 減少堆疊使用
-    char *p = &ch[4];
-    
-    // 初始化
-    ch[0] = ch[1] = ch[2] = ch[3] = ch[4] = 0x20;
-    ch[5] = '\0';
-    
-    // 轉換數字
-    if(value == 0) {
-        ch[4] = '0';
-    } else {
-        do {
-            *p-- = (value % 10) + 0x30;
-            value /= 10;
-        } while(value > 0);
-    }
-    
-    OLED_print_string_2x_correct(x_pos, y_pos, ch);
-}
 void OLED_clear_value_area(void)
 {
     unsigned char x, page;
@@ -413,3 +420,30 @@ void OLED_clear_value_area(void)
         I2C_GenerateSTOP(ENABLE);  
     }
 }
+
+//清除矩形區塊
+void clear_rect_area(unsigned char x_start, unsigned char y_start, 
+                     unsigned char width, unsigned char height)
+{
+    unsigned char i, j;
+    
+    for(i = 0; i < width; i++) {
+        for(j = 0; j < height; j++) {
+            Draw_Pixel(x_start + i, y_start + j, 0);
+        }
+    }
+}
+
+void Low_water(void){
+	//clear_rect_area(0, 0, 16, 16);
+	OLED_print_Image(water_Full,Display_OFF);	
+	delay_ms(100);
+}
+
+void Full_Water(void){
+	//clear_rect_area(0, 0, 16, 16);
+	OLED_print_Image(water_Low,Display_OFF);	
+	delay_ms(100);
+}
+
+

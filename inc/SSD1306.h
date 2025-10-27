@@ -62,8 +62,8 @@
 #define y_max                                      			4
 #define y_min                                      			0
 
-#define SCREEN_HEIGHT                               		16
-#define PAGE_HEIGHT           													 4    // SCREEN_HEIGHT / 8
+#define SCREEN_HEIGHT                               		32
+#define PAGE           													 4    // SCREEN_HEIGHT / 8
 
 #define ON                                           		1
 #define OFF                                          		0
@@ -74,10 +74,9 @@
 #define ROUND                                     			1
 #define SQUARE                                    			0
 
-#define buffer_size                               			32//(x_max * y_max)
+#define buffer_size                               			128//(x_max * y_max)
 
 extern unsigned char buffer[buffer_size];
-
 
 void I2C_setup(void);
 void OLED_HW_setup(void);
@@ -92,8 +91,10 @@ void OLED_print_char(unsigned char x_pos, unsigned char y_pos, unsigned char ch)
 void OLED_print_string(unsigned char x_pos, unsigned char y_pos, unsigned char *ch);
 void OLED_print_int(unsigned char x_pos, unsigned char y_pos, signed long value);
 void Draw_Pixel(unsigned char x_pos, unsigned char y_pos, unsigned char colour);
-void OLED_print_char_2x_tall(unsigned char x_pos, unsigned char y_pos, unsigned char ch);
-void OLED_print_string_2x_correct(unsigned char x_pos, unsigned char y_pos, char *ch);
-void OLED_print_int_2x(unsigned char x_pos, unsigned char y_pos, signed long value);
-void OLED_print_uint16_2x(unsigned char x_pos, unsigned char y_pos, uint16_t value);
+void OLED_print_2xChar(unsigned char x_pos, unsigned char y_pos, unsigned char ch);
+void OLED_print_string_2x(unsigned char x_pos, unsigned char y_pos, char *ch);
 void OLED_clear_value_area(void);
+void clear_rect_area(unsigned char x_start, unsigned char y_start, 
+                     unsigned char width, unsigned char height);
+void Low_water(void);
+void Full_Water(void);
