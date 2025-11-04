@@ -8,3 +8,5 @@ y_size  -> 32 | y_max -> 4
 
 I changed 'OLED_print_Image' to make it display 16*16!
 
+10:19 2025年11月4日
+分離出來OLED_print_Image_4page()，可以滿版顯示字形

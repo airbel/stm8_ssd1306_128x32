@@ -63,7 +63,7 @@
 #define y_min                                      			0
 
 #define SCREEN_HEIGHT                               		32
-#define PAGE           													 4    // SCREEN_HEIGHT / 8
+#define PAGE                  													 4    // SCREEN_HEIGHT / 8
 
 #define ON                                           		1
 #define OFF                                          		0
@@ -85,11 +85,15 @@ void OLED_write(unsigned char value, unsigned char control_byte);
 void OLED_gotoxy(unsigned char x_pos, unsigned char y_pos);
 void OLED_fill(unsigned char bmp_data);
 void OLED_print_Image(const unsigned char *bmp, unsigned char pixel);
+void OLED_print_Image_2page(unsigned char x_start, unsigned char page_start,
+                      const unsigned char *bmp, unsigned char pixel);
+void OLED_print_Image_4page(unsigned char x_start, unsigned char page_start,
+                      const unsigned char *bmp, unsigned char pixel);
 void OLED_clear_screen(void);
 void OLED_clear_buffer(void);
 void OLED_print_char(unsigned char x_pos, unsigned char y_pos, unsigned char ch);
 void OLED_print_string(unsigned char x_pos, unsigned char y_pos, unsigned char *ch);
-void OLED_print_int(unsigned char x_pos, unsigned char y_pos, signed long value);
+void OLED_print_int(unsigned char x_pos, unsigned char y_pos, signed long value,unsigned char size);
 void Draw_Pixel(unsigned char x_pos, unsigned char y_pos, unsigned char colour);
 void OLED_print_2xChar(unsigned char x_pos, unsigned char y_pos, unsigned char ch);
 void OLED_print_string_2x(unsigned char x_pos, unsigned char y_pos, char *ch);
@@ -98,3 +102,5 @@ void clear_rect_area(unsigned char x_start, unsigned char y_start,
                      unsigned char width, unsigned char height);
 void Low_water(void);
 void Full_Water(void);
+void Full_Water_position(void);
+void Moisturn_Full_D1(void);

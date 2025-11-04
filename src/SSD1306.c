@@ -193,7 +193,7 @@ void OLED_print_Image(const unsigned char *bmp, unsigned char pixel)
          I2C_SendData(SSD1306_DAT);
          while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));    
 
-         for(x_pos = x_min; x_pos < 16; x_pos++)
+         for(x_pos = x_min; x_pos < 16; x_pos++)				 
          {
             I2C_SendData((*bmp++ ^ pixel));
             while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED));
@@ -203,6 +203,74 @@ void OLED_print_Image(const unsigned char *bmp, unsigned char pixel)
      }
 }
 
+
+
+void OLED_print_Image_2page(unsigned char x_start, unsigned char page_start,
+                      const unsigned char *bmp, unsigned char pixel)
+{
+    unsigned char x_pos = 0;
+    unsigned char page = 0;
+
+    if(pixel != OFF)
+        pixel = 0xFF;
+    else
+        pixel = 0x00;
+
+    for(page = 0; page < 2; page++)  // 兩頁高 = 16 pixels
+    {
+         OLED_gotoxy(x_start, page_start + page);
+
+         I2C_GenerateSTART(ENABLE);
+         while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
+       
+         I2C_Send7bitAddress(SSD1306_I2C_Address, I2C_DIRECTION_TX); 
+         while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+       
+         I2C_SendData(SSD1306_DAT);
+         while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));    
+
+         for(x_pos = 0; x_pos < 16; x_pos++)
+         {
+            I2C_SendData((*bmp++ ^ pixel));
+            while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+         }
+
+		 I2C_GenerateSTOP(ENABLE); 
+     }
+}
+void OLED_print_Image_4page(unsigned char x_start, unsigned char page_start,
+                      const unsigned char *bmp, unsigned char pixel)
+{
+    unsigned char x_pos = 0;
+    unsigned char page = 0;
+
+    if(pixel != OFF)
+        pixel = 0xFF;
+    else
+        pixel = 0x00;
+
+    for(page = 0; page < 4; page++)  // 四頁 = 32 pixels
+    {
+         OLED_gotoxy(x_start, page_start + page);
+
+         I2C_GenerateSTART(ENABLE);
+         while(!I2C_CheckEvent(I2C_EVENT_MASTER_MODE_SELECT));
+       
+         I2C_Send7bitAddress(SSD1306_I2C_Address, I2C_DIRECTION_TX); 
+         while(!I2C_CheckEvent(I2C_EVENT_MASTER_TRANSMITTER_MODE_SELECTED));
+       
+         I2C_SendData(SSD1306_DAT);
+         while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTING));    
+
+         for(x_pos = 0; x_pos < 32; x_pos++)
+         {
+            I2C_SendData((*bmp++ ^ pixel));
+            while(!I2C_CheckEvent(I2C_EVENT_MASTER_BYTE_TRANSMITTED));
+         }
+
+		 I2C_GenerateSTOP(ENABLE); 
+     }
+}
 
 void OLED_clear_screen(void)
 {
@@ -257,7 +325,7 @@ void OLED_print_string(unsigned char x_pos, unsigned char y_pos, char *ch)
 }
 
 
-void OLED_print_int(unsigned char x_pos, unsigned char y_pos, signed long value)
+void OLED_print_int(unsigned char x_pos, unsigned char y_pos, signed long value,unsigned char size)
 {
    
     char ch[7] = {0x20, 0x20, 0x20, 0x20, 0x20, 0x20, '\0'}; // 移除 \n
@@ -277,8 +345,9 @@ void OLED_print_int(unsigned char x_pos, unsigned char y_pos, signed long value)
         *p-- = (uval % 10) + 0x30;
         uval /= 10;
     } while(uval > 0 && p >= &ch[1]);
-    
-    //OLED_print_string(x_pos, y_pos, ch); //使用一頁
+    if (size == 1 )
+    OLED_print_string(x_pos, y_pos, ch); //使用一頁
+		else if (size == 2 )
 		OLED_print_string_2x(x_pos, y_pos, ch);//使用二頁
 }
 
@@ -447,3 +516,10 @@ void Full_Water(void){
 }
 
 
+void Full_Water_position(void){
+	OLED_print_Image_2page(96,0,water_bottle,Display_OFF);
+}
+
+void Moisturn_Full_D1 (void){
+OLED_print_Image_4page(96,0,Moisturn_Full,Display_ON);
+}

@@ -25,7 +25,8 @@ void main()
 
 	OLED_clear_screen();
 	OLED_print_string_2x(20, 0, "Moisture");	
-	
+	Moisturn_Full_D1();
+	delay_ms(1); //太快會當機，要延遲一下
 	while(TRUE)
 	{					
 		adcValue = ADC1_ReadChannel(ADC1_CHANNEL_4);   //讀 PA3
@@ -35,17 +36,14 @@ void main()
 				state = 1;
 			}	else	{
 				state = 0;
-			}
-		OLED_clear_value_area();
+			}		
 		if(state){			
 			Low_water();
 		}	else {
 			Full_Water();
 		}
 		
-		OLED_print_int(0,2,voltage_mV);
-		
-		
+		OLED_print_int(0,2,voltage_mV,2);
 		OLED_clear_buffer();
 		delay_ms(1000);		
 	};
